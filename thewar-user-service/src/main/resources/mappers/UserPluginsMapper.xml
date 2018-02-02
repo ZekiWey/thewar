@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lw.user.dao.UserPluginsMapper" >
+  <resultMap id="BaseResultMap" type="com.lw.pojo.UserPlugins" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="hx_username" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="map_username" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="login_status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, hx_username, map_username, login_status, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_plugins
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_plugins
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lw.pojo.UserPlugins" useGeneratedKeys="true" keyProperty="id" >
+    insert into user_plugins (id, hx_username, map_username, 
+      login_status, create_time)
+    values (#{id,jdbcType=INTEGER}, #{hxUsername,jdbcType=VARCHAR}, #{mapUsername,jdbcType=VARCHAR}, 
+      #{loginStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lw.pojo.UserPlugins" >
+    insert into user_plugins
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="hxUsername != null" >
+        hx_username,
+      </if>
+      <if test="mapUsername != null" >
+        map_username,
+      </if>
+      <if test="loginStatus != null" >
+        login_status,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="hxUsername != null" >
+        #{hxUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="mapUsername != null" >
+        #{mapUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="loginStatus != null" >
+        #{loginStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lw.pojo.UserPlugins" >
+    update user_plugins
+    <set >
+      <if test="hxUsername != null" >
+        hx_username = #{hxUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="mapUsername != null" >
+        map_username = #{mapUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="loginStatus != null" >
+        login_status = #{loginStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lw.pojo.UserPlugins" >
+    update user_plugins
+    set hx_username = #{hxUsername,jdbcType=VARCHAR},
+      map_username = #{mapUsername,jdbcType=VARCHAR},
+      login_status = #{loginStatus,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectHXUsername" resultType="int" parameterType="string">
+    SELECT
+    COUNT(1)
+    FROM
+    user_plugins
+    WHERE
+    hx_username=#{hxUserName}
+  </select>
+</mapper>

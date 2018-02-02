@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="thewa-rutils" />
+        <module name="thewar-common" />
+        <module name="thewar-pojo" />
+        <module name="thewar-user-api" />
+        <module name="thewar-user-service" />
+        <module name="thewar-user-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="thewa-rutils" target="1.8" />
+      <module name="thewar" target="1.8" />
+      <module name="thewar-common" target="1.8" />
+      <module name="thewar-pojo" target="1.8" />
+      <module name="thewar-user-api" target="1.8" />
+      <module name="thewar-user-service" target="1.8" />
+      <module name="thewar-user-web" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
